@@ -1,21 +1,34 @@
-# typescript-package-scaffold
+# OpenVPN Connect Profile Batch Importor
 
-[![travis-ci](https://travis-ci.org/yume-chan/typescript-package-scaffold.svg?branch=master)](https://travis-ci.org/yume-chan/typescript-package-scaffold)
-[![Greenkeeper badge](https://badges.greenkeeper.io/yume-chan/typescript-package-scaffold.svg)](https://greenkeeper.io/)
+## Usage
 
-*DESCRIPTION TO BE FILLED*
+```shell
+npm i -g @yume-chan/openvpn-conenct-profile-batch-importer
+```
 
-- [typescript-package-scaffold](#typescript-package-scaffold)
-  - [API](#API)
-  - [Development](#Development)
-    - [Install dependencies:](#Install-dependencies)
-    - [Testing](#Testing)
-    - [Coverage](#Coverage)
-  - [License](#License)
+```text
+Import-OpenVPNConnectProfile [glob]
 
-## API
+Batch import OpenVPN profiles matching glob into OpenVPN Connect
 
-*TO BE FILLED*
+Positionals:
+  glob  Glob to match OpenVPN Profile files         [string] [default: "*.ovpn"]
+
+Options:
+  --version       Show version number                                  [boolean]
+  --username, -u  Username will be saved in OpenVPN Connect config file as plain
+                  text                                       [string] [required]
+  --password, -p  Password will be encrypted, then saved into Windows
+                  Crendential Manager                        [string] [required]
+  --config, -c    Path to OpenVPN Connect config file
+                      [string] [default: "C:\Users\Simon\AppData\Roaming\OpenVPN
+                                                           Connect\config.json"]
+  --help          Show help                                            [boolean]
+```
+
+**Examples:**
+
+Import-OpenVPNConnectProfile --username test@example.com --password p@ssw0rd "C:\OpenVPN\*.ovpn"
 
 ## Development
 
@@ -28,18 +41,6 @@ pnpm i
 ```
 
 You may also use `npm`, but the lockfile may become out of sync.
-
-### Testing
-
-``` shell
-npm test
-```
-
-### Coverage
-
-``` shell
-npm run coverage
-```
 
 ## License
 
