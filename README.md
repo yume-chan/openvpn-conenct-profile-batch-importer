@@ -1,5 +1,9 @@
 # OpenVPN Connect Profile Batch Importor
 
+A CLI tool to import multiple OpenVPN profiles into OpenVPN Connect app.
+
+Tested with OpenVPN Connect v3.1.3.(713) on Windows 10.
+
 ## Usage
 
 ```shell
@@ -28,7 +32,9 @@ Options:
 
 **Examples:**
 
+```shell
 Import-OpenVPNConnectProfile --username test@example.com --password p@ssw0rd "C:\OpenVPN\*.ovpn"
+```
 
 ## Development
 
