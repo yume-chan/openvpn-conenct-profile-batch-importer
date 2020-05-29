@@ -27,9 +27,11 @@ function encryptPassword(password: string, profileName: string): string {
     return Buffer.concat(result).toString('base64');
 }
 
-function saveCredential(password: string, profileName: string): void {
-    keytar.setPassword(
-        'org.openvpn.client.',
+const credentialService = 'org.openvpn.client.';
+
+function saveCredential(password: string, profileName: string): Promise<void> {
+    return keytar.setPassword(
+        credentialService,
         profileName,
         encryptPassword(password, profileName)
     );
@@ -37,13 +39,16 @@ function saveCredential(password: string, profileName: string): void {
 
 function createProfile(
     filepath: string,
-    username: string
+    username: string,
+    profileFolder: string,
 ) {
     const content = fs.readFileSync(filepath, 'utf-8');
-    const [, hostname, port] = content.match(/remote\s(.*?)\s*?(\d+)?/);
+    const [, hostname, port] = content.match(/remote\s*([^\s]*)\s*(\d+)?/);
     const basename = path.basename(filepath, path.extname(filepath));
     const profileDisplayName = `${hostname} ${basename}`;
     const profileName = `PC ${profileDisplayName}`;
+
+    fs.writeFileSync(path.resolve(profileFolder, `${profileName}.ovpn`), content);
 
     return [
         profileName,
@@ -151,17 +156,25 @@ const { username, password, config, glob: files } = yargs
     .help()
     .argv;
 
+const profileFolder = path.resolve(path.dirname(config), 'profiles');
+
 const filenames = glob.sync(files as string, { realpath: true });
 const profiles = Object.fromEntries(
     filenames.map(filename => {
         const filepath = path.resolve(filename);
-        return createProfile(filename, username);
+        return createProfile(filename, username, profileFolder);
     })
 );
 
-for (const profileName in profiles) {
-    saveCredential(password, profileName);
-}
+(async () => {
+    for (const { account } of await keytar.findCredentials(credentialService)) {
+        await keytar.deletePassword(credentialService, account);
+    }
+
+    for (const profileName in profiles) {
+        await saveCredential(password, profileName);
+    }
+})();
 
 updateConfig(config, profiles);
 
