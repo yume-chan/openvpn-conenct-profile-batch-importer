@@ -7,7 +7,7 @@ Tested with OpenVPN Connect v3.1.3.(713) on Windows 10.
 ## Usage
 
 ```shell
-npm i -g @yume-chan/openvpn-conenct-profile-batch-importer
+npm i -g @yume-chan/openvpn-connect-profile-batch-importer
 ```
 
 ```text

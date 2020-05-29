@@ -1,5 +1,5 @@
 {
-  "name": "@yume-chan/openvpn-conenct-profile-batch-importer",
+  "name": "@yume-chan/openvpn-connect-profile-batch-importer",
   "version": "1.0.1",
   "description": "A CLI tool to import multiple OpenVPN profiles into OpenVPN Connect app.",
   "main": "lib/index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yume-chan/openvpn-conenct-profile-batch-importer.git"
+    "url": "git+https://github.com/yume-chan/openvpn-connect-profile-batch-importer.git"
   },
   "author": "Simon Chan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yume-chan/openvpn-conenct-profile-batch-importer/issues"
+    "url": "https://github.com/yume-chan/openvpn-connect-profile-batch-importer/issues"
   },
-  "homepage": "https://github.com/yume-chan/openvpn-conenct-profile-batch-importer#readme",
+  "homepage": "https://github.com/yume-chan/openvpn-connect-profile-batch-importer#readme",
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/jest": "25.2.3",
