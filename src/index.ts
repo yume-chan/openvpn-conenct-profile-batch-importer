@@ -90,7 +90,7 @@ function createProfile(
             profileDisplayName,
             profileName,
             profileType: 'PC',
-            savedPassword: 'true',
+            savedPassword: true,
             selectedServer: {
                 server: null,
             },
