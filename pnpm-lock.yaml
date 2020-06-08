@@ -5,7 +5,7 @@ dependencies:
 devDependencies:
   '@types/glob': 7.1.2
   '@types/jest': 25.2.3
-  '@types/node': 14.0.11
+  '@types/node': 14.0.12
   '@types/yargs': 15.0.5
   jest: 26.0.1
   ts-jest: 26.1.0_jest@26.0.1+typescript@3.9.5
@@ -579,6 +579,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-lCvvI24L21ZVeIiyIUHZ5Oflv1hhHQ5E1S25IRlKIXaRkVgmXpJMI3wUJkmym2bTbCe+WoIibQnMVAU3FguaOg==
+  /@types/node/14.0.12:
+    dev: true
+    resolution:
+      integrity: sha512-/sjzehvjkkpvLpYtN6/2dv5kg41otMGuHQUt9T2aiAuIfleCQRQHXXzF1eAw/qkZTj5Kcf4JSTf7EIizHocy6Q==
   /@types/normalize-package-data/2.4.0:
     dev: true
     resolution:
@@ -4137,7 +4141,7 @@ packages:
 specifiers:
   '@types/glob': 7.1.2
   '@types/jest': 25.2.3
-  '@types/node': 14.0.11
+  '@types/node': 14.0.12
   '@types/yargs': 15.0.5
   glob: ^7.1.6
   jest: 26.0.1
