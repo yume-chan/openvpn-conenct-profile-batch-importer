@@ -28,7 +28,7 @@
   "homepage": "https://github.com/yume-chan/openvpn-connect-profile-batch-importer#readme",
   "devDependencies": {
     "@types/glob": "7.1.2",
-    "@types/jest": "25.2.3",
+    "@types/jest": "26.0.0",
     "@types/node": "14.0.13",
     "@types/yargs": "15.0.5",
     "jest": "26.0.1",
