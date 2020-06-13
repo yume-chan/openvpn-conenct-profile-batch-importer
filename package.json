@@ -1,6 +1,6 @@
 {
-  "name": "@yume-chan/openvpn-conenct-profile-batch-importer",
-  "version": "1.0.2",
+  "name": "@yume-chan/openvpn-connect-profile-batch-importer",
+  "version": "1.0.1",
   "description": "A CLI tool to import multiple OpenVPN profiles into OpenVPN Connect app.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run build"
   },
   "bin": {
-    "Import-OpenVPNConnectProfile": "lib/index.js"
+    "openvpn-connect-profile-manager": "lib/index.js"
   },
   "repository": {
     "type": "git",
