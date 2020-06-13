@@ -68,7 +68,7 @@ yargs
                 })
                 .option('password', {
                     type: 'string',
-                    describe: 'Password will be saved into Windows Crendential Manager encrypted',
+                    describe: 'Password will be saved into Windows Credential Manager encrypted',
                     requiresArg: true,
                     group: 'Command Options:',
                 }).alias('p', 'password')
@@ -210,12 +210,45 @@ yargs
                 }).alias('u', 'username')
                 .option('password', {
                     type: 'string',
-                    describe: 'Password will be saved into Windows Crendential Manager encrypted',
+                    describe: 'Password will be saved into Windows Credential Manager encrypted',
                     requiresArg: true,
                     group: 'Command Options:',
                 }).alias('p', 'password');
-        }, async ({ regex, username, password }) => {
+        }, async ({ regex, username, password, config: configPath }) => {
+            if (!username && !password) {
+                console.log('nothing to update');
+                return;
+            }
 
+            // Read out old config
+            const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+            const root = JSON.parse(config['persist:root']);
+            const status = JSON.parse(root['status']);
+            const profiles = status['profiles'];
+
+            const profileFolder = path.resolve(path.dirname(configPath), 'profiles');
+            let count = 0;
+
+            for (const profileName in profiles) {
+                if (profileName.match(regex)) {
+                    if (username) {
+                        profiles[profileName].username = username;
+                    }
+
+                    if (password) {
+                        await keytar.deletePassword(credentialService, profileName);
+                    }
+
+                    count++;
+                }
+            }
+
+            // Write back config
+            root['status'] = JSON.stringify(status);
+            config['persist:root'] = JSON.stringify(root);
+            fs.writeFileSync(configPath, JSON.stringify(config));
+
+            console.log(`${count} profile(s) updated`);
         }
     )
     .alias('v', 'version').group('version', 'Global Options:')

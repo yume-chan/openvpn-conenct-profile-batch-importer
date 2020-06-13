@@ -11,42 +11,99 @@ npm i -g @yume-chan/openvpn-connect-profile-batch-importer
 ```
 
 ```text
-Import-OpenVPNConnectProfile [glob]
+openvpn-connect-profile-manager <command> [options]
 
-Batch import OpenVPN profiles matching glob into OpenVPN Connect
+Commands:
+  openvpn-connect-profile-manager import    Import profiles
+  <username> [glob]
+  openvpn-connect-profile-manager remove    Remove profiles
+  <regex>
+  openvpn-connect-profile-manager set       Update profiles
+  <regex>
 
-Positionals:
-  glob  Glob to match OpenVPN Profile files         [string] [default: "*.ovpn"]
-
-Options:
-  --version       Show version number                                  [boolean]
-  --username, -u  Username will be saved in OpenVPN Connect config file as plain
-                  text                                       [string] [required]
-  --password, -p  Password will be encrypted, then saved into Windows
-                  Crendential Manager                        [string] [required]
-  --config, -c    Path to OpenVPN Connect config file
-                      [string] [default: "C:\Users\Simon\AppData\Roaming\OpenVPN
-                                                           Connect\config.json"]
-  --help          Show help                                            [boolean]
+Command Options:
+  -c, --config  Path to OpenVPN Connect config file                     [string]
+Global Options:
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
 ```
 
-**Examples:**
+### Import
+
+```text
+openvpn-connect-profile-manager import <username> [glob]
+
+Import profiles
+
+Positionals:
+  username  Username will be saved in imported profile config as plain text
+                                                             [string] [required]
+  glob      Glob to match OpenVPN Profile files     [string] [default: "*.ovpn"]
+
+Command Options:
+  -c, --config    Path to OpenVPN Connect config file                   [string]
+  -p, --password  Password will be saved into Windows Credential Manager
+                  encrypted                                             [string]
+
+Global Options:
+  -v, --version  Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
+```
+
+**Example**
 
 ```shell
-Import-OpenVPNConnectProfile --username test@example.com --password p@ssw0rd "C:\OpenVPN\*.ovpn"
+openvpn-connect-profile-manager import test@example.com "C:\OpenVPN\*.ovpn" --password p@ssw0rd
+```
+
+### remove
+
+```text
+openvpn-connect-profile-manager remove <regex>
+
+Remove profiles
+
+Positionals:
+  regex  Regex to match profiles to be removed                        [required]
+
+Command Options:
+  -c, --config  Path to OpenVPN Connect config file                     [string]
+
+Global Options:
+  -v, --version  Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
+```
+
+### update
+
+```text
+openvpn-connect-profile-manager <command> [options]
+
+Commands:
+  openvpn-connect-profile-manager import    Import profiles
+  <username> [glob]
+  openvpn-connect-profile-manager remove    Remove profiles
+  <regex>
+  openvpn-connect-profile-manager set       Update profiles
+  <regex>
+
+Command Options:
+  -c, --config  Path to OpenVPN Connect config file                     [string]
+
+Global Options:
+  -v, --version  Show version number                                   [boolean]
+  -h, --help     Show help                                             [boolean]
 ```
 
 ## Development
 
-This project uses [pnpm](https://pnpm.js.org/) ([GitHub](https://github.com/pnpm/pnpm)) to manage dependency packages.
+This project uses [pnpm](https://pnpm.js.org/) to manage dependencies.
 
 ### Install dependencies:
 
 ``` shell
 pnpm i
 ```
-
-You may also use `npm`, but the lockfile may become out of sync.
 
 ## License
 
