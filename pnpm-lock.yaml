@@ -4,7 +4,7 @@ dependencies:
   yargs: 15.3.1
 devDependencies:
   '@types/glob': 7.1.2
-  '@types/jest': 26.0.0
+  '@types/jest': 26.0.3
   '@types/node': 14.0.14
   '@types/yargs': 15.0.5
   jest: 26.1.0
@@ -561,13 +561,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-P/W9yOX/3oPZSpaYOCQzGqgCQRXn0FFO/V8bWrCQs+wLmvVVxk6CRBXALEvNs9OHIatlnlFokfhuDo2ug01ciw==
-  /@types/jest/26.0.0:
+  /@types/jest/26.0.3:
     dependencies:
       jest-diff: 25.5.0
       pretty-format: 25.5.0
     dev: true
     resolution:
-      integrity: sha512-/yeMsH9HQ1RLORlXAwoLXe8S98xxvhNtUz3yrgrwbaxYjT+6SFPZZRksmRKRA6L5vsUtSHeN71viDOTTyYAD+g==
+      integrity: sha512-v89ga1clpVL/Y1+YI0eIu1VMW+KU7Xl8PhylVtDKVWaSUHBHYPLXMQGBdrpHewaKoTvlXkksbYqPgz8b4cmRZg==
   /@types/minimatch/3.0.3:
     dev: true
     resolution:
@@ -4138,7 +4138,7 @@ packages:
       integrity: sha512-92O1HWEjw27sBfgmXiixJWT5hRBp2eobqXicLtPBIDBhYB+1HpwZlXmbW2luivBJHBzki+7VyCLRtAkScbTBQA==
 specifiers:
   '@types/glob': 7.1.2
-  '@types/jest': 26.0.0
+  '@types/jest': 26.0.3
   '@types/node': 14.0.14
   '@types/yargs': 15.0.5
   glob: ^7.1.6
