@@ -71,7 +71,7 @@ yargs
                     describe: 'Password will be saved into Windows Credential Manager encrypted',
                     requiresArg: true,
                     group: 'Command Options:',
-                }).alias('p', 'password')
+                }).alias('p', 'password');
         },
         async ({ username, glob: profileGlob, password, config: configPath }) => {
             const filenames = glob.sync(profileGlob as string, { realpath: true });
@@ -86,7 +86,7 @@ yargs
 
             for (const filename of filenames) {
                 const content = fs.readFileSync(filename, 'utf-8');
-                const [, hostname, port = '1194'] = content.match(/remote\s*([^\s]*)\s*(\d+)?/);
+                const [, hostname, port = '1194'] = content.match(/remote\s*([^\s]*)\s*(\d+)?/)!;
                 const basename = path.basename(filename, path.extname(filename));
                 const profileDisplayName = `${hostname} ${basename}`;
                 const profileName = `PC ${profileDisplayName}`;
